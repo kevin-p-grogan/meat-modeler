@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18484262BA124001E7E76 /* MeatModelerApp.swift */; };
+		AAD18487262BA124001E7E76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* ContentView.swift */; };
+		AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD18488262BA12C001E7E76 /* Assets.xcassets */; };
+		AAD1848C262BA12C001E7E76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD1848B262BA12C001E7E76 /* Preview Assets.xcassets */; };
+		AAD18497262BA12C001E7E76 /* MeatModelerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18496262BA12C001E7E76 /* MeatModelerTests.swift */; };
+		AAD184A2262BA12C001E7E76 /* MeatModelerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAD18493262BA12C001E7E76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAD18479262BA124001E7E76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAD18480262BA124001E7E76;
+			remoteInfo = MeatModeler;
+		};
+		AAD1849E262BA12C001E7E76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAD18479262BA124001E7E76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAD18480262BA124001E7E76;
+			remoteInfo = MeatModeler;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AAD18481262BA124001E7E76 /* MeatModeler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatModeler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD18484262BA124001E7E76 /* MeatModelerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerApp.swift; sourceTree = "<group>"; };
+		AAD18486262BA124001E7E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAD18488262BA12C001E7E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAD1848B262BA12C001E7E76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAD1848D262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD18492262BA12C001E7E76 /* MeatModelerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatModelerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD18496262BA12C001E7E76 /* MeatModelerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerTests.swift; sourceTree = "<group>"; };
+		AAD18498262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD1849D262BA12C001E7E76 /* MeatModelerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatModelerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerUITests.swift; sourceTree = "<group>"; };
+		AAD184A3262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAD1847E262BA124001E7E76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD1848F262BA12C001E7E76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD1849A262BA12C001E7E76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAD18478262BA124001E7E76 = {
+			isa = PBXGroup;
+			children = (
+				AAD18483262BA124001E7E76 /* MeatModeler */,
+				AAD18495262BA12C001E7E76 /* MeatModelerTests */,
+				AAD184A0262BA12C001E7E76 /* MeatModelerUITests */,
+				AAD18482262BA124001E7E76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAD18482262BA124001E7E76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAD18481262BA124001E7E76 /* MeatModeler.app */,
+				AAD18492262BA12C001E7E76 /* MeatModelerTests.xctest */,
+				AAD1849D262BA12C001E7E76 /* MeatModelerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAD18483262BA124001E7E76 /* MeatModeler */ = {
+			isa = PBXGroup;
+			children = (
+				AAD18484262BA124001E7E76 /* MeatModelerApp.swift */,
+				AAD18486262BA124001E7E76 /* ContentView.swift */,
+				AAD18488262BA12C001E7E76 /* Assets.xcassets */,
+				AAD1848D262BA12C001E7E76 /* Info.plist */,
+				AAD1848A262BA12C001E7E76 /* Preview Content */,
+			);
+			path = MeatModeler;
+			sourceTree = "<group>";
+		};
+		AAD1848A262BA12C001E7E76 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AAD1848B262BA12C001E7E76 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AAD18495262BA12C001E7E76 /* MeatModelerTests */ = {
+			isa = PBXGroup;
+			children = (
+				AAD18496262BA12C001E7E76 /* MeatModelerTests.swift */,
+				AAD18498262BA12C001E7E76 /* Info.plist */,
+			);
+			path = MeatModelerTests;
+			sourceTree = "<group>";
+		};
+		AAD184A0262BA12C001E7E76 /* MeatModelerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */,
+				AAD184A3262BA12C001E7E76 /* Info.plist */,
+			);
+			path = MeatModelerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAD18480262BA124001E7E76 /* MeatModeler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD184A6262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModeler" */;
+			buildPhases = (
+				AAD1847D262BA124001E7E76 /* Sources */,
+				AAD1847E262BA124001E7E76 /* Frameworks */,
+				AAD1847F262BA124001E7E76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeatModeler;
+			productName = MeatModeler;
+			productReference = AAD18481262BA124001E7E76 /* MeatModeler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AAD18491262BA12C001E7E76 /* MeatModelerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD184A9262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerTests" */;
+			buildPhases = (
+				AAD1848E262BA12C001E7E76 /* Sources */,
+				AAD1848F262BA12C001E7E76 /* Frameworks */,
+				AAD18490262BA12C001E7E76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAD18494262BA12C001E7E76 /* PBXTargetDependency */,
+			);
+			name = MeatModelerTests;
+			productName = MeatModelerTests;
+			productReference = AAD18492262BA12C001E7E76 /* MeatModelerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AAD1849C262BA12C001E7E76 /* MeatModelerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD184AC262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerUITests" */;
+			buildPhases = (
+				AAD18499262BA12C001E7E76 /* Sources */,
+				AAD1849A262BA12C001E7E76 /* Frameworks */,
+				AAD1849B262BA12C001E7E76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAD1849F262BA12C001E7E76 /* PBXTargetDependency */,
+			);
+			name = MeatModelerUITests;
+			productName = MeatModelerUITests;
+			productReference = AAD1849D262BA12C001E7E76 /* MeatModelerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAD18479262BA124001E7E76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					AAD18480262BA124001E7E76 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					AAD18491262BA12C001E7E76 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AAD18480262BA124001E7E76;
+					};
+					AAD1849C262BA12C001E7E76 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AAD18480262BA124001E7E76;
+					};
+				};
+			};
+			buildConfigurationList = AAD1847C262BA124001E7E76 /* Build configuration list for PBXProject "MeatModeler" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAD18478262BA124001E7E76;
+			productRefGroup = AAD18482262BA124001E7E76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAD18480262BA124001E7E76 /* MeatModeler */,
+				AAD18491262BA12C001E7E76 /* MeatModelerTests */,
+				AAD1849C262BA12C001E7E76 /* MeatModelerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAD1847F262BA124001E7E76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD1848C262BA12C001E7E76 /* Preview Assets.xcassets in Resources */,
+				AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD18490262BA12C001E7E76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD1849B262BA12C001E7E76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAD1847D262BA124001E7E76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD18487262BA124001E7E76 /* ContentView.swift in Sources */,
+				AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD1848E262BA12C001E7E76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD18497262BA12C001E7E76 /* MeatModelerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD18499262BA12C001E7E76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD184A2262BA12C001E7E76 /* MeatModelerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAD18494262BA12C001E7E76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAD18480262BA124001E7E76 /* MeatModeler */;
+			targetProxy = AAD18493262BA12C001E7E76 /* PBXContainerItemProxy */;
+		};
+		AAD1849F262BA12C001E7E76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAD18480262BA124001E7E76 /* MeatModeler */;
+			targetProxy = AAD1849E262BA12C001E7E76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AAD184A4262BA12C001E7E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAD184A5262BA12C001E7E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAD184A7262BA12C001E7E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeatModeler/Preview Content\"";
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeatModeler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModeler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AAD184A8262BA12C001E7E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeatModeler/Preview Content\"";
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeatModeler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModeler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AAD184AA262BA12C001E7E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				INFOPLIST_FILE = MeatModelerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModelerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeatModeler.app/MeatModeler";
+			};
+			name = Debug;
+		};
+		AAD184AB262BA12C001E7E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				INFOPLIST_FILE = MeatModelerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModelerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeatModeler.app/MeatModeler";
+			};
+			name = Release;
+		};
+		AAD184AD262BA12C001E7E76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				INFOPLIST_FILE = MeatModelerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModelerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeatModeler;
+			};
+			name = Debug;
+		};
+		AAD184AE262BA12C001E7E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W6X7YWSFNB;
+				INFOPLIST_FILE = MeatModelerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.broscience.MeatModelerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeatModeler;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAD1847C262BA124001E7E76 /* Build configuration list for PBXProject "MeatModeler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD184A4262BA12C001E7E76 /* Debug */,
+				AAD184A5262BA12C001E7E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD184A6262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModeler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD184A7262BA12C001E7E76 /* Debug */,
+				AAD184A8262BA12C001E7E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD184A9262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD184AA262BA12C001E7E76 /* Debug */,
+				AAD184AB262BA12C001E7E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD184AC262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD184AD262BA12C001E7E76 /* Debug */,
+				AAD184AE262BA12C001E7E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAD18479262BA124001E7E76 /* Project object */;
+}
