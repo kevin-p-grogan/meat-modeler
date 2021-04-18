@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18484262BA124001E7E76 /* MeatModelerApp.swift */; };
-		AAD18487262BA124001E7E76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* ContentView.swift */; };
+		AAD18487262BA124001E7E76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* MainView.swift */; };
 		AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD18488262BA12C001E7E76 /* Assets.xcassets */; };
 		AAD1848C262BA12C001E7E76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD1848B262BA12C001E7E76 /* Preview Assets.xcassets */; };
 		AAD18497262BA12C001E7E76 /* MeatModelerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18496262BA12C001E7E76 /* MeatModelerTests.swift */; };
 		AAD184A2262BA12C001E7E76 /* MeatModelerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */; };
+		AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */; };
+		AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184C1262BA882001E7E76 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,7 @@
 /* Begin PBXFileReference section */
 		AAD18481262BA124001E7E76 /* MeatModeler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatModeler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD18484262BA124001E7E76 /* MeatModelerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerApp.swift; sourceTree = "<group>"; };
-		AAD18486262BA124001E7E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAD18486262BA124001E7E76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AAD18488262BA12C001E7E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD1848B262BA12C001E7E76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AAD1848D262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		AAD1849D262BA12C001E7E76 /* MeatModelerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatModelerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerUITests.swift; sourceTree = "<group>"; };
 		AAD184A3262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
+		AAD184C1262BA882001E7E76 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +99,12 @@
 		AAD18483262BA124001E7E76 /* MeatModeler */ = {
 			isa = PBXGroup;
 			children = (
-				AAD18484262BA124001E7E76 /* MeatModelerApp.swift */,
-				AAD18486262BA124001E7E76 /* ContentView.swift */,
+				AAD184B5262BA667001E7E76 /* Views */,
 				AAD18488262BA12C001E7E76 /* Assets.xcassets */,
+				AAD18484262BA124001E7E76 /* MeatModelerApp.swift */,
 				AAD1848D262BA12C001E7E76 /* Info.plist */,
 				AAD1848A262BA12C001E7E76 /* Preview Content */,
+				AAD184C1262BA882001E7E76 /* Configuration.swift */,
 			);
 			path = MeatModeler;
 			sourceTree = "<group>";
@@ -128,6 +133,15 @@
 				AAD184A3262BA12C001E7E76 /* Info.plist */,
 			);
 			path = MeatModelerUITests;
+			sourceTree = "<group>";
+		};
+		AAD184B5262BA667001E7E76 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAD18486262BA124001E7E76 /* MainView.swift */,
+				AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD18487262BA124001E7E76 /* ContentView.swift in Sources */,
+				AAD18487262BA124001E7E76 /* MainView.swift in Sources */,
+				AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */,
+				AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */,
 				AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
