@@ -15,6 +15,10 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "slider.horizontal.3")
                 }
+            ResultsView(config: config)
+                .tabItem {
+                    Image(systemName:"waveform.path.ecg")
+                }
         }
         .font(.headline)
         .preferredColorScheme(.dark)

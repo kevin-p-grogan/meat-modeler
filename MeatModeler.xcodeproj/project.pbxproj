@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		AAD184A2262BA12C001E7E76 /* MeatModelerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */; };
 		AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */; };
 		AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184C1262BA882001E7E76 /* Configuration.swift */; };
+		AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AAD184C7262BCCBA001E7E76 /* SwiftUICharts */; };
+		AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184CC262BCDE2001E7E76 /* ResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		AAD184A3262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		AAD184C1262BA882001E7E76 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		AAD184CC262BCDE2001E7E76 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +144,7 @@
 			children = (
 				AAD18486262BA124001E7E76 /* MainView.swift */,
 				AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */,
+				AAD184CC262BCDE2001E7E76 /* ResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +165,9 @@
 			dependencies = (
 			);
 			name = MeatModeler;
+			packageProductDependencies = (
+				AAD184C7262BCCBA001E7E76 /* SwiftUICharts */,
+			);
 			productName = MeatModeler;
 			productReference = AAD18481262BA124001E7E76 /* MeatModeler.app */;
 			productType = "com.apple.product-type.application";
@@ -231,6 +239,9 @@
 				Base,
 			);
 			mainGroup = AAD18478262BA124001E7E76;
+			packageReferences = (
+				AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = AAD18482262BA124001E7E76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -276,6 +287,7 @@
 				AAD18487262BA124001E7E76 /* MainView.swift in Sources */,
 				AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */,
 				AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */,
+				AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */,
 				AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AAD184C7262BCCBA001E7E76 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAD18479262BA124001E7E76 /* Project object */;
 }
