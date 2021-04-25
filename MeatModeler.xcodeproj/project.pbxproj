@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28EC1E2B8DAB296CE6B995F8 /* Pods_MeatModeler_MeatModelerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C04C3F889FCF42F9CCEEAD /* Pods_MeatModeler_MeatModelerUITests.framework */; };
+		5909628C731A7A0A634819E9 /* Pods_MeatModelerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8124AC7E1DF0A9D51CDA18 /* Pods_MeatModelerTests.framework */; };
+		AA35ADB42634AA1D002C8B8B /* PorkTenderloinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */; };
+		AA35ADBF2634E6B5002C8B8B /* test_model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = AA35ADBE2634E6B5002C8B8B /* test_model.tflite */; };
 		AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18484262BA124001E7E76 /* MeatModelerApp.swift */; };
 		AAD18487262BA124001E7E76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* MainView.swift */; };
 		AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD18488262BA12C001E7E76 /* Assets.xcassets */; };
@@ -17,6 +21,7 @@
 		AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184C1262BA882001E7E76 /* Configuration.swift */; };
 		AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AAD184C7262BCCBA001E7E76 /* SwiftUICharts */; };
 		AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184CC262BCDE2001E7E76 /* ResultsView.swift */; };
+		C762071C07F08C46EC1749F6 /* Pods_MeatModeler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BF65985D23E548D45AC876 /* Pods_MeatModeler.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0966DC2A6B392D2C2DC3028C /* Pods-MeatModeler-MeatModelerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModeler-MeatModelerUITests.debug.xcconfig"; path = "Target Support Files/Pods-MeatModeler-MeatModelerUITests/Pods-MeatModeler-MeatModelerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		477616846EB9751FA46D3912 /* Pods-MeatModeler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModeler.debug.xcconfig"; path = "Target Support Files/Pods-MeatModeler/Pods-MeatModeler.debug.xcconfig"; sourceTree = "<group>"; };
+		74C237214DDA8EC0C6FDD2FE /* Pods-MeatModeler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModeler.release.xcconfig"; path = "Target Support Files/Pods-MeatModeler/Pods-MeatModeler.release.xcconfig"; sourceTree = "<group>"; };
+		8AD1CB8D3EBBA49ACA0B248E /* Pods-MeatModeler-MeatModelerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModeler-MeatModelerUITests.release.xcconfig"; path = "Target Support Files/Pods-MeatModeler-MeatModelerUITests/Pods-MeatModeler-MeatModelerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A9C04C3F889FCF42F9CCEEAD /* Pods_MeatModeler_MeatModelerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeatModeler_MeatModelerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorkTenderloinModel.swift; sourceTree = "<group>"; };
+		AA35ADBE2634E6B5002C8B8B /* test_model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = test_model.tflite; path = MeatSolver/test/model/test_model.tflite; sourceTree = SOURCE_ROOT; };
 		AAD18481262BA124001E7E76 /* MeatModeler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatModeler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD18484262BA124001E7E76 /* MeatModelerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerApp.swift; sourceTree = "<group>"; };
 		AAD18486262BA124001E7E76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -52,6 +64,10 @@
 		AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		AAD184C1262BA882001E7E76 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		AAD184CC262BCDE2001E7E76 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		B1BF65985D23E548D45AC876 /* Pods_MeatModeler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeatModeler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D18C3276B8D0F89631C27921 /* Pods-MeatModelerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModelerTests.debug.xcconfig"; path = "Target Support Files/Pods-MeatModelerTests/Pods-MeatModelerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA8124AC7E1DF0A9D51CDA18 /* Pods_MeatModelerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeatModelerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F10953295689A450B1AC41 /* Pods-MeatModelerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModelerTests.release.xcconfig"; path = "Target Support Files/Pods-MeatModelerTests/Pods-MeatModelerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */,
+				C762071C07F08C46EC1749F6 /* Pods_MeatModeler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5909628C731A7A0A634819E9 /* Pods_MeatModelerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +92,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28EC1E2B8DAB296CE6B995F8 /* Pods_MeatModeler_MeatModelerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		322AD2A21CF11C03238704C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				477616846EB9751FA46D3912 /* Pods-MeatModeler.debug.xcconfig */,
+				74C237214DDA8EC0C6FDD2FE /* Pods-MeatModeler.release.xcconfig */,
+				0966DC2A6B392D2C2DC3028C /* Pods-MeatModeler-MeatModelerUITests.debug.xcconfig */,
+				8AD1CB8D3EBBA49ACA0B248E /* Pods-MeatModeler-MeatModelerUITests.release.xcconfig */,
+				D18C3276B8D0F89631C27921 /* Pods-MeatModelerTests.debug.xcconfig */,
+				F7F10953295689A450B1AC41 /* Pods-MeatModelerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AA35ADAC2634A8E3002C8B8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA35ADBE2634E6B5002C8B8B /* test_model.tflite */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA35ADB22634A9F0002C8B8B /* ModelDataHandler */ = {
+			isa = PBXGroup;
+			children = (
+				AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */,
+			);
+			path = ModelDataHandler;
+			sourceTree = "<group>";
+		};
 		AAD18478262BA124001E7E76 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +135,8 @@
 				AAD18495262BA12C001E7E76 /* MeatModelerTests */,
 				AAD184A0262BA12C001E7E76 /* MeatModelerUITests */,
 				AAD18482262BA124001E7E76 /* Products */,
+				322AD2A21CF11C03238704C2 /* Pods */,
+				B68C2D4240CB11B380B5AA85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +153,8 @@
 		AAD18483262BA124001E7E76 /* MeatModeler */ = {
 			isa = PBXGroup;
 			children = (
+				AA35ADB22634A9F0002C8B8B /* ModelDataHandler */,
+				AA35ADAC2634A8E3002C8B8B /* Model */,
 				AAD184B5262BA667001E7E76 /* Views */,
 				AAD18488262BA12C001E7E76 /* Assets.xcassets */,
 				AAD18484262BA124001E7E76 /* MeatModelerApp.swift */,
@@ -149,6 +201,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B68C2D4240CB11B380B5AA85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1BF65985D23E548D45AC876 /* Pods_MeatModeler.framework */,
+				A9C04C3F889FCF42F9CCEEAD /* Pods_MeatModeler_MeatModelerUITests.framework */,
+				EA8124AC7E1DF0A9D51CDA18 /* Pods_MeatModelerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAD184A6262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModeler" */;
 			buildPhases = (
+				942526748F1FD7129FE8C708 /* [CP] Check Pods Manifest.lock */,
 				AAD1847D262BA124001E7E76 /* Sources */,
 				AAD1847E262BA124001E7E76 /* Frameworks */,
 				AAD1847F262BA124001E7E76 /* Resources */,
@@ -176,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAD184A9262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerTests" */;
 			buildPhases = (
+				43308BA9AEB12E056D31F4AB /* [CP] Check Pods Manifest.lock */,
 				AAD1848E262BA12C001E7E76 /* Sources */,
 				AAD1848F262BA12C001E7E76 /* Frameworks */,
 				AAD18490262BA12C001E7E76 /* Resources */,
@@ -194,6 +258,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAD184AC262BA12C001E7E76 /* Build configuration list for PBXNativeTarget "MeatModelerUITests" */;
 			buildPhases = (
+				78D11EED2F26112FAB8E501A /* [CP] Check Pods Manifest.lock */,
 				AAD18499262BA12C001E7E76 /* Sources */,
 				AAD1849A262BA12C001E7E76 /* Frameworks */,
 				AAD1849B262BA12C001E7E76 /* Resources */,
@@ -260,6 +325,7 @@
 			files = (
 				AAD1848C262BA12C001E7E76 /* Preview Assets.xcassets in Resources */,
 				AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */,
+				AA35ADBF2634E6B5002C8B8B /* test_model.tflite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +345,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		43308BA9AEB12E056D31F4AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeatModelerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78D11EED2F26112FAB8E501A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeatModeler-MeatModelerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		942526748F1FD7129FE8C708 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeatModeler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AAD1847D262BA124001E7E76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -286,6 +421,7 @@
 			files = (
 				AAD18487262BA124001E7E76 /* MainView.swift in Sources */,
 				AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */,
+				AA35ADB42634AA1D002C8B8B /* PorkTenderloinModel.swift in Sources */,
 				AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */,
 				AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */,
 				AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */,
@@ -442,6 +578,7 @@
 		};
 		AAD184A7262BA12C001E7E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 477616846EB9751FA46D3912 /* Pods-MeatModeler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,6 +601,7 @@
 		};
 		AAD184A8262BA12C001E7E76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74C237214DDA8EC0C6FDD2FE /* Pods-MeatModeler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +624,7 @@
 		};
 		AAD184AA262BA12C001E7E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D18C3276B8D0F89631C27921 /* Pods-MeatModelerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +647,7 @@
 		};
 		AAD184AB262BA12C001E7E76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7F10953295689A450B1AC41 /* Pods-MeatModelerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +670,7 @@
 		};
 		AAD184AD262BA12C001E7E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0966DC2A6B392D2C2DC3028C /* Pods-MeatModeler-MeatModelerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -550,6 +691,7 @@
 		};
 		AAD184AE262BA12C001E7E76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AD1CB8D3EBBA49ACA0B248E /* Pods-MeatModeler-MeatModelerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

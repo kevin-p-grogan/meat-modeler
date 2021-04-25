@@ -18,11 +18,21 @@ class MeatModelerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testTFLiteModel() throws {
+        // Tests the predictions from tensorflow on a test model.
+        let modelInfo = FileInfo(name: "test_model", extension: "tflite")
+        let model =  PorkTenderloinModel(modelFileInfo: modelInfo)!
+        let a: Float = -1.0
+        let b: Float = 3.0
+        let c: Float = 2.0
+        let predictions = model.predict(kappa: a, theta0: b, nusseltNumber: c)!
+        for prediction in predictions {
+            // Compare against the test model. See python unit test for definition.
+            let testValue = a * prediction.rho + b * prediction.tau + c
+            XCTAssertEqual(prediction.theta, testValue, accuracy: 1e-3)
+        }
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
