@@ -13,7 +13,7 @@ class TestModelCreation(unittest.TestCase):
 
     def test_save_model(self):
         pork_tenderloin_model = PorkTenderloinModel()
-        x = tf.cast(tf.linspace(0, 1, 3), tf.float32)
+        x = tf.cast(tf.linspace(0.0, 0.5, 3), tf.float32)
         y = tf.cast(tf.linspace(0, 1, 3), tf.float32)
         pork_tenderloin_model._model = self._make_test_model(x, y)
         pork_tenderloin_model.save(self._test_model_filepath)
@@ -21,12 +21,11 @@ class TestModelCreation(unittest.TestCase):
 
     @staticmethod
     def _make_test_model(x: tf.Tensor, y: tf.Tensor) -> tf.keras.Model:
-        input = tf.keras.Input(3, dtype=tf.float32)
+        input = tf.keras.Input(2, dtype=tf.float32)
         a = input[:, 0]
         b = input[:, 1]
-        c = input[:, 2]
         x, y = tf.meshgrid(x, y)
-        output = a * x + b * y + c
+        output = a * x + b * y
         model = tf.keras.Model(inputs=input, outputs=output)
         return model
 

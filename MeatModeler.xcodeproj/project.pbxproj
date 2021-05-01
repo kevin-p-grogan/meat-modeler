@@ -11,6 +11,7 @@
 		5909628C731A7A0A634819E9 /* Pods_MeatModelerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8124AC7E1DF0A9D51CDA18 /* Pods_MeatModelerTests.framework */; };
 		AA35ADB42634AA1D002C8B8B /* PorkTenderloinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */; };
 		AA35ADBF2634E6B5002C8B8B /* test_model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = AA35ADBE2634E6B5002C8B8B /* test_model.tflite */; };
+		AA35ADC726366093002C8B8B /* pork_tenderloin.tflite in Resources */ = {isa = PBXBuildFile; fileRef = AA35ADC626366093002C8B8B /* pork_tenderloin.tflite */; };
 		AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18484262BA124001E7E76 /* MeatModelerApp.swift */; };
 		AAD18487262BA124001E7E76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* MainView.swift */; };
 		AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD18488262BA12C001E7E76 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		A9C04C3F889FCF42F9CCEEAD /* Pods_MeatModeler_MeatModelerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeatModeler_MeatModelerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorkTenderloinModel.swift; sourceTree = "<group>"; };
 		AA35ADBE2634E6B5002C8B8B /* test_model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = test_model.tflite; path = MeatSolver/test/model/test_model.tflite; sourceTree = SOURCE_ROOT; };
+		AA35ADC626366093002C8B8B /* pork_tenderloin.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = pork_tenderloin.tflite; path = MeatSolver/model/pork_tenderloin.tflite; sourceTree = SOURCE_ROOT; };
 		AAD18481262BA124001E7E76 /* MeatModeler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatModeler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD18484262BA124001E7E76 /* MeatModelerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerApp.swift; sourceTree = "<group>"; };
 		AAD18486262BA124001E7E76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		AA35ADAC2634A8E3002C8B8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA35ADC626366093002C8B8B /* pork_tenderloin.tflite */,
 				AA35ADBE2634E6B5002C8B8B /* test_model.tflite */,
 			);
 			path = Model;
@@ -326,6 +329,7 @@
 				AAD1848C262BA12C001E7E76 /* Preview Assets.xcassets in Resources */,
 				AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */,
 				AA35ADBF2634E6B5002C8B8B /* test_model.tflite in Resources */,
+				AA35ADC726366093002C8B8B /* pork_tenderloin.tflite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
