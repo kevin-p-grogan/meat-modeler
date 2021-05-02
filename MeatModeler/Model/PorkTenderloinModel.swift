@@ -10,7 +10,7 @@ import Foundation
 
 
 /// An inference from invoking the `Interpreter`.
-struct Prediction {
+struct NondimensionalPredictions {
     let theta: Float
     let rho: Float
     let tau: Float
@@ -39,6 +39,11 @@ class PorkTenderloinModel {
     let tauMin: Float = 0.0
     let tauMax: Float = 1.0
     let shouldWeightRhoByArea: Bool
+    let k: Float = 0.47  // [W/m.K] src: https://www.engineeringtoolbox.com/food-thermal-conductivity-d_2177.html
+    let C: Float = 660  // [J/kg.K] src: https://www.engineeringtoolbox.com/specific-heat-capacity-food-d_295.html
+    let density: Float = 1090 // [kg/m^3]
+    
+    let tauEps: Float = 1e-6
 
     // MARK: - Private Properties
 
@@ -81,7 +86,7 @@ class PorkTenderloinModel {
   // MARK: - Internal Methods
 
     
-    func predict(kappa: Float, theta0: Float) -> [Prediction]? {
+    func makeNondimensionalPredictions(kappa: Float, theta0: Float) -> [NondimensionalPredictions]? {
 
         let outputTensor: Tensor
         do {
@@ -105,22 +110,22 @@ class PorkTenderloinModel {
         }
         
         // Unravel the predictions
-        let predictions = self.getPredictions(from: outputs)
-        return predictions
+        let nondimensionalPredictions = self.associateSpaceAndTime(from: outputs)
+        return nondimensionalPredictions
   }
     
-    private func getPredictions(from outputs: [Float]) -> [Prediction] {
-        // Gets the predictions from the array. Assumes that the model produces the same number of tau as rho and that rho is distributed by area.
-        var predictions = [Prediction]()
+    private func associateSpaceAndTime(from outputs: [Float]) -> [NondimensionalPredictions] {
+        // Assoctiates the spatial and temporal (i.e., rho and tau, respectively) with the temperature (theta).
+        var predictions = [NondimensionalPredictions]()
         let numOutputs = outputs.count
         let dim = sqrt(Float(numOutputs))  // dimension the same in all directions
         assert(dim.truncatingRemainder(dividingBy: 1.0) == 0)
-        let rhos = getDiscretization(from: 0, to: 0.5, withCount: Int(dim), shouldWeightByArea: shouldWeightRhoByArea)
-        let taus = getDiscretization(from: 0, to: 1.0, withCount: Int(dim))
+        let rhos = getDiscretization(from: rhoMin, to: rhoMax, withCount: Int(dim), shouldWeightByArea: shouldWeightRhoByArea)
+        let taus = getDiscretization(from: tauMin, to: tauMax, withCount: Int(dim))
         for (index, theta) in outputs.enumerated() {
             let rho = rhos[index % Int(dim)]
             let tau = taus[index / Int(dim)]
-            predictions.append(Prediction(theta: theta, rho: rho, tau: tau))
+            predictions.append(NondimensionalPredictions(theta: theta, rho: rho, tau: tau))
         }
         return predictions
     }
@@ -143,6 +148,15 @@ class PorkTenderloinModel {
         return discretization
     }
     
+    func computeSpatialTemperature(T0: Float, TInfty: Float, D: Float, tFinal: Float) -> [SpatialTemperatureDatum]? {
+        let kappa = k * tFinal / (density * C * pow(D, 2.0))
+        let theta0 = T0/TInfty - 1.0
+        let predictions = makeNondimensionalPredictions(kappa: kappa, theta0: theta0)
+        let endTimePredictions = predictions?.filter{abs($0.tau-tauMax) <= tauEps}.sorted{$0.rho < $1.rho}
+        let dimensionalPredictions = endTimePredictions?.map{SpatialTemperatureDatum(x: $0.rho*D, T: TInfty*($0.theta+1))}
+        return dimensionalPredictions
+    }
+
 }
 
 // MARK: - Extensions

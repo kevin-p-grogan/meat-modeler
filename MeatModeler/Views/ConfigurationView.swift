@@ -17,21 +17,21 @@ let formatter: NumberFormatter = {
 
 
 struct ConfigurationView: View {
-    @ObservedObject var config: Configuration
+    @ObservedObject var control: Controller
     var body: some View {
         NavigationView {
             Form {
                 Section{
-                    TemperatureConfigurationView(config: config)
+                    TemperatureConfigurationView(config: control)
                 }
                 Section{
-                    MassConfigurationView(config: config)
+                    MassConfigurationView(config: control)
                 }
                 Section{
-                    TimeConfigurationView(config: config)
+                    TimeConfigurationView(config: control)
                 }
                 Section{
-                    SizeConfigurationView(config: config)
+                    SizeConfigurationView(config: control)
                 }
             }.navigationBarTitle("Configure")
         }
@@ -39,7 +39,7 @@ struct ConfigurationView: View {
 }
 
 struct TemperatureConfigurationView: View {
-    @ObservedObject var config: Configuration
+    @ObservedObject var config: Controller
     var body: some View {
         Text("Temperature").font(.headline)
         HStack{
@@ -48,12 +48,12 @@ struct TemperatureConfigurationView: View {
             TextField("", value: $config.startTemperature, formatter: formatter).frame(maxWidth: .infinity)
         }
         HStack{
-            Text("Finish").frame(maxWidth: .infinity)
+            Text("Ambient").frame(maxWidth: .infinity)
             Divider().frame(maxWidth: .infinity)
-            TextField("", value: $config.finalTemperature, formatter: formatter)
+            TextField("", value: $config.ambientTemperature, formatter: formatter)
         }
         Picker("Temperature Unit", selection: $config.temperatureUnit) {
-            ForEach(temperatureUnits, id:\.self) { tu in
+            ForEach(Array(UnitConverter.temperatureUnits.keys), id:\.self) { tu in
                 Text(tu)
             }
         }.pickerStyle(SegmentedPickerStyle())
@@ -61,7 +61,7 @@ struct TemperatureConfigurationView: View {
 }
 
 struct MassConfigurationView: View {
-    @ObservedObject var config: Configuration
+    @ObservedObject var config: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Mass").font(.headline)
@@ -69,7 +69,7 @@ struct MassConfigurationView: View {
             TextField("", value: $config.mass, formatter: formatter)
         }
         Picker("Mass Unit", selection: $config.massUnit) {
-            ForEach(massUnits, id:\.self) { mu in
+            ForEach(Array(UnitConverter.massUnits.keys), id:\.self) { mu in
                 Text(mu)
             }
         }.pickerStyle(SegmentedPickerStyle())
@@ -77,7 +77,7 @@ struct MassConfigurationView: View {
 }
 
 struct TimeConfigurationView: View {
-    @ObservedObject var config: Configuration
+    @ObservedObject var config: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Time").font(.headline)
@@ -85,7 +85,7 @@ struct TimeConfigurationView: View {
             TextField("", value: $config.cookTime, formatter: formatter)
         }
         Picker("Time Unit", selection: $config.timeUnit) {
-            ForEach(timeUnits, id:\.self) { tu in
+            ForEach(Array(UnitConverter.timeUnits.keys), id:\.self) { tu in
                 Text(tu)
             }
         }.pickerStyle(SegmentedPickerStyle())
@@ -93,7 +93,7 @@ struct TimeConfigurationView: View {
 }
 
 struct SizeConfigurationView: View {
-    @ObservedObject var config: Configuration
+    @ObservedObject var config: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Size").font(.headline)
@@ -101,7 +101,7 @@ struct SizeConfigurationView: View {
             TextField("", value: $config.size, formatter: formatter)
         }
         Picker("Lenght Unit", selection: $config.lengthUnit) {
-            ForEach(lengthUnits, id:\.self) { lu in
+            ForEach(Array(UnitConverter.lengthUnits.keys), id:\.self) { lu in
                 Text(lu)
             }
         }.pickerStyle(SegmentedPickerStyle())
@@ -110,6 +110,6 @@ struct SizeConfigurationView: View {
 
 struct ConfigurationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigurationView(config: Configuration())
+        ConfigurationView(control: Controller())
     }
 }

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var config = Configuration()
+    @ObservedObject var control = Controller()
     var body: some View {
         TabView {
-            ConfigurationView(config: config)
+            ConfigurationView(control: control)
                 .tabItem {
                     Image(systemName: "slider.horizontal.3")
                 }
-            ResultsView(config: config)
+            ResultsView(control: control)
                 .tabItem {
                     Image(systemName:"waveform.path.ecg")
                 }

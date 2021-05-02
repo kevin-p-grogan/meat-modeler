@@ -12,6 +12,7 @@
 		AA35ADB42634AA1D002C8B8B /* PorkTenderloinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */; };
 		AA35ADBF2634E6B5002C8B8B /* test_model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = AA35ADBE2634E6B5002C8B8B /* test_model.tflite */; };
 		AA35ADC726366093002C8B8B /* pork_tenderloin.tflite in Resources */ = {isa = PBXBuildFile; fileRef = AA35ADC626366093002C8B8B /* pork_tenderloin.tflite */; };
+		AA944D34263E11D600DF8294 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AA944D33263E11D600DF8294 /* SwiftUICharts */; };
 		AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18484262BA124001E7E76 /* MeatModelerApp.swift */; };
 		AAD18487262BA124001E7E76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18486262BA124001E7E76 /* MainView.swift */; };
 		AAD18489262BA12C001E7E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD18488262BA12C001E7E76 /* Assets.xcassets */; };
@@ -19,8 +20,7 @@
 		AAD18497262BA12C001E7E76 /* MeatModelerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD18496262BA12C001E7E76 /* MeatModelerTests.swift */; };
 		AAD184A2262BA12C001E7E76 /* MeatModelerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */; };
 		AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */; };
-		AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184C1262BA882001E7E76 /* Configuration.swift */; };
-		AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = AAD184C7262BCCBA001E7E76 /* SwiftUICharts */; };
+		AAD184C2262BA882001E7E76 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184C1262BA882001E7E76 /* Controller.swift */; };
 		AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD184CC262BCDE2001E7E76 /* ResultsView.swift */; };
 		C762071C07F08C46EC1749F6 /* Pods_MeatModeler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BF65985D23E548D45AC876 /* Pods_MeatModeler.framework */; };
 /* End PBXBuildFile section */
@@ -64,7 +64,7 @@
 		AAD184A1262BA12C001E7E76 /* MeatModelerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeatModelerUITests.swift; sourceTree = "<group>"; };
 		AAD184A3262BA12C001E7E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD184B9262BA6F0001E7E76 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
-		AAD184C1262BA882001E7E76 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		AAD184C1262BA882001E7E76 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		AAD184CC262BCDE2001E7E76 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		B1BF65985D23E548D45AC876 /* Pods_MeatModeler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeatModeler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18C3276B8D0F89631C27921 /* Pods-MeatModelerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatModelerTests.debug.xcconfig"; path = "Target Support Files/Pods-MeatModelerTests/Pods-MeatModelerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD184C8262BCCBA001E7E76 /* SwiftUICharts in Frameworks */,
 				C762071C07F08C46EC1749F6 /* Pods_MeatModeler.framework in Frameworks */,
+				AA944D34263E11D600DF8294 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,18 +117,11 @@
 		AA35ADAC2634A8E3002C8B8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */,
 				AA35ADC626366093002C8B8B /* pork_tenderloin.tflite */,
 				AA35ADBE2634E6B5002C8B8B /* test_model.tflite */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		AA35ADB22634A9F0002C8B8B /* ModelDataHandler */ = {
-			isa = PBXGroup;
-			children = (
-				AA35ADB32634AA1D002C8B8B /* PorkTenderloinModel.swift */,
-			);
-			path = ModelDataHandler;
 			sourceTree = "<group>";
 		};
 		AAD18478262BA124001E7E76 = {
@@ -156,14 +149,13 @@
 		AAD18483262BA124001E7E76 /* MeatModeler */ = {
 			isa = PBXGroup;
 			children = (
-				AA35ADB22634A9F0002C8B8B /* ModelDataHandler */,
 				AA35ADAC2634A8E3002C8B8B /* Model */,
 				AAD184B5262BA667001E7E76 /* Views */,
 				AAD18488262BA12C001E7E76 /* Assets.xcassets */,
 				AAD18484262BA124001E7E76 /* MeatModelerApp.swift */,
 				AAD1848D262BA12C001E7E76 /* Info.plist */,
 				AAD1848A262BA12C001E7E76 /* Preview Content */,
-				AAD184C1262BA882001E7E76 /* Configuration.swift */,
+				AAD184C1262BA882001E7E76 /* Controller.swift */,
 			);
 			path = MeatModeler;
 			sourceTree = "<group>";
@@ -232,7 +224,7 @@
 			);
 			name = MeatModeler;
 			packageProductDependencies = (
-				AAD184C7262BCCBA001E7E76 /* SwiftUICharts */,
+				AA944D33263E11D600DF8294 /* SwiftUICharts */,
 			);
 			productName = MeatModeler;
 			productReference = AAD18481262BA124001E7E76 /* MeatModeler.app */;
@@ -308,7 +300,7 @@
 			);
 			mainGroup = AAD18478262BA124001E7E76;
 			packageReferences = (
-				AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */,
+				AA944D32263E11D600DF8294 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = AAD18482262BA124001E7E76 /* Products */;
 			projectDirPath = "";
@@ -426,7 +418,7 @@
 				AAD18487262BA124001E7E76 /* MainView.swift in Sources */,
 				AAD184BA262BA6F0001E7E76 /* ConfigurationView.swift in Sources */,
 				AA35ADB42634AA1D002C8B8B /* PorkTenderloinModel.swift in Sources */,
-				AAD184C2262BA882001E7E76 /* Configuration.swift in Sources */,
+				AAD184C2262BA882001E7E76 /* Controller.swift in Sources */,
 				AAD184CD262BCDE2001E7E76 /* ResultsView.swift in Sources */,
 				AAD18485262BA124001E7E76 /* MeatModelerApp.swift in Sources */,
 			);
@@ -756,20 +748,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+		AA944D32263E11D600DF8294 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
+			repositoryURL = "https://github.com/willdale/SwiftUICharts";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.5;
+				minimumVersion = 2.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AAD184C7262BCCBA001E7E76 /* SwiftUICharts */ = {
+		AA944D33263E11D600DF8294 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AAD184C6262BCCBA001E7E76 /* XCRemoteSwiftPackageReference "ChartView" */;
+			package = AA944D32263E11D600DF8294 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
 			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
