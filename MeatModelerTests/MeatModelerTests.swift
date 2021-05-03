@@ -45,8 +45,14 @@ class MeatModelerTests: XCTestCase {
         XCTAssertEqual(taus.max()!, 1.0, accuracy: 1e-3)
         XCTAssertEqual(taus.min()!, 0.0, accuracy: 1e-3)
         // now look at the spatial predictions
-        let spatialTemperatures = model.computeSpatialTemperature(T0: 300, TInfty: 400, D: 1.0, tFinal: 1000)!
+        let spatialTemperatures = model.computeFinalSpatialTemperature(T0: 300, TInfty: 400, D: 1.0, tFinal: 1000)!
         XCTAssertTrue(spatialTemperatures.count > 0)
+        // check the temperature distibution
+        let numBins: Int = 5
+        let temperatureDistribution = PorkTenderloinModel.computeFinalTemperatureDistribution(spatialTemperatures, numBins: numBins)
+        XCTAssertTrue(temperatureDistribution.count == numBins)
+        XCTAssertTrue(temperatureDistribution.map{$0.T}.max()! <= spatialTemperatures.map{$0.T}.max()!)
+        XCTAssertTrue(temperatureDistribution.map{$0.T}.min()! >= spatialTemperatures.map{$0.T}.min()!)
     }
     
     func testPerformanceExample() throws {

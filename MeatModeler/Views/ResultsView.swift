@@ -14,91 +14,76 @@ struct ResultsView: View {
     
     
     var body: some View {
-        VStack {
-            LineChart(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-//                    .pointMarkers(chartData: data)
-                        .touchOverlay(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData), specifier: "%.0f")
-//                    .yAxisPOI(chartData: data,
-//                              markerName: "Step Count Aim",
-//                              markerValue: 15_000,
-//                              labelPosition: .center(specifier: "%.0f"),
-//                              labelColour: Color.black,
-//                              labelBackground: Color(red: 1.0, green: 0.75, blue: 0.25),
-//                              lineColour: Color(red: 1.0, green: 0.75, blue: 0.25),
-//                              strokeStyle: StrokeStyle(lineWidth: 3, dash: [5,10]))
-//                    .yAxisPOI(chartData: data,
-//                              markerName: "Minimum Recommended",
-//                              markerValue: 10_000,
-//                              labelPosition: .center(specifier: "%.0f"),
-//                              labelColour: Color.white,
-//                              labelBackground: Color(red: 0.25, green: 0.75, blue: 1.0),
-//                              lineColour: Color(red: 0.25, green: 0.75, blue: 1.0),
-//                              strokeStyle: StrokeStyle(lineWidth: 3, dash: [5,10]))
-//                    .averageLine(chartData: data,
-//                                 strokeStyle: StrokeStyle(lineWidth: 3, dash: [5,10]))
-                        .xAxisGrid(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .yAxisGrid(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .xAxisLabels(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .yAxisLabels(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .infoBox(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .headerBox(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData))
-                        .legends(chartData: ResultsView.spatialTemperatureChartData(control.spatialTemperatureData), columns: [GridItem(.flexible()), GridItem(.flexible())])
-                        .id(ResultsView.spatialTemperatureChartData(control.spatialTemperatureData).id)
-                    .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 400, alignment: .center)
-                    .padding()
-            }
-            .navigationTitle("Week of Data")
+        NavigationView{
+            Form {
+                Section{
+                    BarChart(chartData: temperatureDistributionChartData)
+                        .xAxisLabels(chartData: temperatureDistributionChartData)
+                        .headerBox(chartData: temperatureDistributionChartData)
+                        .id(temperatureDistributionChartData.id)
+                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 600, alignment: .center)
+                }
+                Section{
+                    ResultsTableView(control: control)
+                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 300, alignment: .center)
+                    }
+                }.navigationBarTitle(Text("Results"))
+        }
         }
         
-    static func spatialTemperatureChartData(_ spatialTemperatureData: [SpatialTemperatureDatum]) -> LineChartData {
-        let data = LineDataSet(dataPoints: spatialTemperatureData.map{LineChartDataPoint(value: Double($0.T))},
-//                LineChartDataPoint(value: 12000.0, xAxisLabel: "M", description: "Monday"),
-//                LineChartDataPoint(value: 10000, xAxisLabel: "T", description: "Tuesday"),
-//                LineChartDataPoint(value: 8000,  xAxisLabel: "W", description: "Wednesday"),
-//                LineChartDataPoint(value: 17500, xAxisLabel: "T", description: "Thursday"),
-//                LineChartDataPoint(value: 16000, xAxisLabel: "F", description: "Friday"),
-//                LineChartDataPoint(value: 11000, xAxisLabel: "S", description: "Saturday"),
-//                LineChartDataPoint(value: 9000,  xAxisLabel: "S", description: "Sunday")
-//            ],
-            legendTitle: "Steps",
-            pointStyle: PointStyle(),
-            style: LineStyle(lineColour: ColourStyle(colour: .red), lineType: .curvedLine))
-            
-            let metadata   = ChartMetadata(title: "Spatial Temperature") //, subtitle: "Over a Week")
-            
-            let gridStyle  = GridStyle(numberOfLines: 7,
-                                       lineColour   : Color(.lightGray).opacity(0.5),
-                                       lineWidth    : 1,
-                                       dash         : [8],
-                                       dashPhase    : 0)
-            
-            let chartStyle = LineChartStyle(infoBoxPlacement    : .infoBox(isStatic: false),
-                                            infoBoxBorderColour : Color.primary,
-                                            infoBoxBorderStyle  : StrokeStyle(lineWidth: 1),
-                                            
-                                            markerType          : .vertical(attachment: .line(dot: .style(DotStyle()))),
-                                            
-                                            xAxisGridStyle      : gridStyle,
-                                            xAxisLabelPosition  : .bottom,
-                                            xAxisLabelColour    : Color.primary,
-                                            xAxisLabelsFrom     : .dataPoint(rotation: .degrees(0)),
-                                            
-                                            yAxisGridStyle      : gridStyle,
-                                            yAxisLabelPosition  : .leading,
-                                            yAxisLabelColour    : Color.primary,
-                                            yAxisNumberOfLabels : 7,
-                                            
-//                                            baseline            : .minimumWithMaximum(of: 5000),
-//                                            topLine             : .maximum(of: 10),
-                                            
-                                            globalAnimation     : .easeOut(duration: 1))
-            
-            return LineChartData(dataSets       : data,
-                                 metadata       : metadata,
-                                 chartStyle     : chartStyle)
-            
-        }
+    var temperatureDistributionChartData: BarChartData {
+        let data = BarDataSet(dataPoints:
+                                control.temperatureDistribution.map{BarChartDataPoint(
+                                value: Double($0.probability),
+                                xAxisLabel: String(format: "%.0f \(control.temperatureUnit)", $0.T))
+                                })
+                
+        let barStyle = BarStyle(
+            barWidth: 0.9
+        )
+        
+        
+        return BarChartData(dataSets: data, barStyle: barStyle)
+        
     }
+    
+    func formatFloatLabel(label: Float) -> String {
+        return String(format: "%.0f \(control.temperatureUnit)", label)
+    }
+}
+
+struct ResultsTableView: View {
+    @ObservedObject var control: Controller
+    
+    let horizontalSpacing: CGFloat = 50
+    let verticalSpacing: CGFloat = 30
+    
+    var body: some View {
+        HStack(spacing: horizontalSpacing){
+                VStack(spacing: verticalSpacing){
+                    Spacer()
+                    Text("Minimum").font(.headline)
+                    Spacer()
+                    Text("Maximum").font(.headline)
+                    Spacer()
+                    Text("Mean").font(.headline)
+                    Spacer()
+                }
+                Divider()
+                VStack(spacing: verticalSpacing){
+                    Spacer()
+                    Text(String(format: "%.0f \(control.temperatureUnit)", control.spatialTemperatures.map{$0.T}.min() ?? control.startTemperature))
+                    Spacer()
+                    Text(String(format: "%.0f \(control.temperatureUnit)", control.spatialTemperatures.map{$0.T}.max() ?? control.ambientTemperature))
+                    Spacer()
+                    Text(String(format: "%.0f \(control.temperatureUnit)", control.spatialTemperatures.map{$0.T}.mean))
+                    Spacer()
+                }
+
+            }
+    }
+}
+
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {

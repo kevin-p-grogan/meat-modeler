@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias SpatialTemperatureDatum = (x: Float, T: Float)
+typealias SpatialTemperature = (x: Float, T: Float)
 
 class Controller: ObservableObject {
     @Published var startTemperature: Float
@@ -27,29 +27,40 @@ class Controller: ObservableObject {
         startTemperature = 45
         ambientTemperature = 350
         mass = 24
-        cookTime = 1200
+        cookTime = 20
         size = 2
-        temperatureUnit = UnitConverter.temperatureUnits.keys.first ?? "°F"
-        timeUnit = UnitConverter.timeUnits.keys.first ?? "s"
-        massUnit = UnitConverter.massUnits.keys.first ?? "oz"
-        lengthUnit = UnitConverter.lengthUnits.keys.first ?? "in"
+        temperatureUnit = "°F"
+        timeUnit = "min"
+        massUnit = "oz"
+        lengthUnit = "in"
     }
     
-    var spatialTemperatureData: [SpatialTemperatureDatum] {
+    var spatialTemperatures: [SpatialTemperature] {
         do {
-            return porkTenderloinModel!.computeSpatialTemperature(
-                T0: try UnitConverter.converToSI(value: startTemperature, unitName: temperatureUnit),
-                TInfty: try UnitConverter.converToSI(value: ambientTemperature, unitName: temperatureUnit),
-                D: try UnitConverter.converToSI(value: size, unitName: lengthUnit),
-                tFinal: try UnitConverter.converToSI(value: cookTime, unitName: temperatureUnit))!
+            let SIResults = porkTenderloinModel!.computeFinalSpatialTemperature(
+                T0: try UnitConverter.converToSI(value: startTemperature, from: temperatureUnit),
+                TInfty: try UnitConverter.converToSI(value: ambientTemperature, from: temperatureUnit),
+                D: try UnitConverter.converToSI(value: size, from: lengthUnit),
+                tFinal: try UnitConverter.converToSI(value: cookTime, from: timeUnit))!
+            return try SIResults.map{
+                SpatialTemperature(
+                    x: try UnitConverter.convertFromSI(value: $0.x, to: lengthUnit),
+                    T: try UnitConverter.convertFromSI(value: $0.T, to: temperatureUnit)
+                )
+            }
+            
         }
         catch {
             print("Computation of spatial temperature failed. Defaulting to linear distribution.")
             return [
-                SpatialTemperatureDatum(x: 0.0, T: startTemperature),
-                SpatialTemperatureDatum(x: size, T: ambientTemperature)
+                SpatialTemperature(x: 0.0, T: startTemperature),
+                SpatialTemperature(x: size, T: ambientTemperature)
             ]
         }
+    }
+    
+    var temperatureDistribution: [TemperatureBin] {
+        PorkTenderloinModel.computeFinalTemperatureDistribution(spatialTemperatures, numBins: 4)
     }
     
 }
@@ -76,30 +87,43 @@ struct UnitConverter {
         "m": UnitLength.meters
     ]
     
-    static func converToSI(value: Float, unitName: String) throws -> Float {
-        var currentUnit: Dimension
-        var finalUnit: Dimension
+    static func converToSI(value: Float, from unitName: String) throws -> Float {
+        let unitPair = try getUnitPair(from: unitName)
+        var measurement = Measurement(value: Double(value), unit: unitPair.unit)
+        measurement.convert(to: unitPair.SIUnit)
+        return Float(measurement.value)
+    }
+    
+    private static func getUnitPair(from unitName: String) throws -> (unit: Dimension, SIUnit: Dimension) {
+        // Returns the unit for the provided unit name and the corresponding SI unit.
+        var unit: Dimension
+        var SIUnit: Dimension
         if temperatureUnits.keys.contains(unitName) {
-            currentUnit =  temperatureUnits[unitName]!
-            finalUnit = UnitTemperature.kelvin
+            unit =  temperatureUnits[unitName]!
+            SIUnit = UnitTemperature.kelvin
         }
         else if timeUnits.keys.contains(unitName) {
-            currentUnit =  timeUnits[unitName]!
-            finalUnit = UnitDuration.seconds
+            unit =  timeUnits[unitName]!
+            SIUnit = UnitDuration.seconds
         }
         else if massUnits.keys.contains(unitName) {
-            currentUnit =  massUnits[unitName]!
-            finalUnit = UnitMass.kilograms
+            unit =  massUnits[unitName]!
+            SIUnit = UnitMass.kilograms
         }
         else if lengthUnits.keys.contains(unitName) {
-            currentUnit =  lengthUnits[unitName]!
-            finalUnit = UnitLength.meters
+            unit =  lengthUnits[unitName]!
+            SIUnit = UnitLength.meters
         }
         else {
             throw "Unexpected unit name \(unitName)."
         }
-        var measurement = Measurement(value: Double(value), unit: currentUnit)
-        measurement.convert(to: finalUnit)
+        return (unit: unit, SIUnit: SIUnit)
+    }
+    
+    static func convertFromSI(value: Float, to unitName: String) throws -> Float {
+        let unitPair = try getUnitPair(from: unitName)
+        var measurement = Measurement(value: Double(value), unit: unitPair.SIUnit)
+        measurement.convert(to: unitPair.unit)
         return Float(measurement.value)
     }
 }

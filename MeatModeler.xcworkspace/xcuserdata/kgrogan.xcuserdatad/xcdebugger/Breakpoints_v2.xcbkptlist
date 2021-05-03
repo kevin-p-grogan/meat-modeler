@@ -20,5 +20,100 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9129C0FB-D0E9-4015-A4FB-4537B02C9062"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeatModelerTests/MeatModelerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "testPorkTenderloinModel()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9129C0FB-D0E9-4015-A4FB-4537B02C9062 - 324641e49f3a71ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeatModelerTests.MeatModelerTests.testPorkTenderloinModel() throws -&gt; ()"
+                  moduleName = "MeatModelerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kgrogan/Projects/Personal/meat-modeler/MeatModeler/MeatModelerTests/MeatModelerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "3991">
+               </Location>
+               <Location
+                  uuid = "9129C0FB-D0E9-4015-A4FB-4537B02C9062 - 81deaa91837e2f27"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 ((T: Swift.Float, probability: Swift.Float)) -&gt; Swift.Float in implicit closure #12 () throws -&gt; Swift.Bool in MeatModelerTests.MeatModelerTests.testPorkTenderloinModel() throws -&gt; ()"
+                  moduleName = "MeatModelerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kgrogan/Projects/Personal/meat-modeler/MeatModeler/MeatModelerTests/MeatModelerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "9129C0FB-D0E9-4015-A4FB-4537B02C9062 - 7005410f3624e7c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 ((x: Swift.Float, T: Swift.Float)) -&gt; Swift.Float in implicit closure #12 () throws -&gt; Swift.Bool in MeatModelerTests.MeatModelerTests.testPorkTenderloinModel() throws -&gt; ()"
+                  moduleName = "MeatModelerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kgrogan/Projects/Personal/meat-modeler/MeatModeler/MeatModelerTests/MeatModelerTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F481EAC0-1954-41B5-BAD7-4B3E29587523"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeatModeler/Controller.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "convertFromSI(value:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E37CEAE8-54CF-44AB-AD8E-324A50F98993"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeatModeler/Model/PorkTenderloinModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "computeFinalSpatialTemperature(T0:TInfty:D:tFinal:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

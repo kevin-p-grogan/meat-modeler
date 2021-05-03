@@ -22,16 +22,16 @@ struct ConfigurationView: View {
         NavigationView {
             Form {
                 Section{
-                    TemperatureConfigurationView(config: control)
+                    TemperatureConfigurationView(control: control)
                 }
                 Section{
-                    MassConfigurationView(config: control)
+                    MassConfigurationView(control: control)
                 }
                 Section{
-                    TimeConfigurationView(config: control)
+                    TimeConfigurationView(control: control)
                 }
                 Section{
-                    SizeConfigurationView(config: control)
+                    SizeConfigurationView(control: control)
                 }
             }.navigationBarTitle("Configure")
         }
@@ -39,20 +39,20 @@ struct ConfigurationView: View {
 }
 
 struct TemperatureConfigurationView: View {
-    @ObservedObject var config: Controller
+    @ObservedObject var control: Controller
     var body: some View {
         Text("Temperature").font(.headline)
         HStack{
             Text("Start").frame(maxWidth: .infinity)
             Divider().frame(maxWidth: .infinity)
-            TextField("", value: $config.startTemperature, formatter: formatter).frame(maxWidth: .infinity)
+            TextField("", value: $control.startTemperature, formatter: formatter).frame(maxWidth: .infinity)
         }
         HStack{
             Text("Ambient").frame(maxWidth: .infinity)
             Divider().frame(maxWidth: .infinity)
-            TextField("", value: $config.ambientTemperature, formatter: formatter)
+            TextField("", value: $control.ambientTemperature, formatter: formatter)
         }
-        Picker("Temperature Unit", selection: $config.temperatureUnit) {
+        Picker("Temperature Unit", selection: $control.temperatureUnit) {
             ForEach(Array(UnitConverter.temperatureUnits.keys), id:\.self) { tu in
                 Text(tu)
             }
@@ -61,14 +61,14 @@ struct TemperatureConfigurationView: View {
 }
 
 struct MassConfigurationView: View {
-    @ObservedObject var config: Controller
+    @ObservedObject var control: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Mass").font(.headline)
             Divider()
-            TextField("", value: $config.mass, formatter: formatter)
+            TextField("", value: $control.mass, formatter: formatter)
         }
-        Picker("Mass Unit", selection: $config.massUnit) {
+        Picker("Mass Unit", selection: $control.massUnit) {
             ForEach(Array(UnitConverter.massUnits.keys), id:\.self) { mu in
                 Text(mu)
             }
@@ -77,14 +77,14 @@ struct MassConfigurationView: View {
 }
 
 struct TimeConfigurationView: View {
-    @ObservedObject var config: Controller
+    @ObservedObject var control: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Time").font(.headline)
             Divider()
-            TextField("", value: $config.cookTime, formatter: formatter)
+            TextField("", value: $control.cookTime, formatter: formatter)
         }
-        Picker("Time Unit", selection: $config.timeUnit) {
+        Picker("Time Unit", selection: $control.timeUnit) {
             ForEach(Array(UnitConverter.timeUnits.keys), id:\.self) { tu in
                 Text(tu)
             }
@@ -93,14 +93,14 @@ struct TimeConfigurationView: View {
 }
 
 struct SizeConfigurationView: View {
-    @ObservedObject var config: Controller
+    @ObservedObject var control: Controller
     var body: some View {
         HStack(spacing: 58.0){
             Text("Size").font(.headline)
             Divider()
-            TextField("", value: $config.size, formatter: formatter)
+            TextField("", value: $control.size, formatter: formatter)
         }
-        Picker("Lenght Unit", selection: $config.lengthUnit) {
+        Picker("Lenght Unit", selection: $control.lengthUnit) {
             ForEach(Array(UnitConverter.lengthUnits.keys), id:\.self) { lu in
                 Text(lu)
             }

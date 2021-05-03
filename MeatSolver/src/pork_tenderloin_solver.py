@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 NUM_BETA = 50
 NUM_RHO = 100
 NUM_TAU = 100
-NUSSELT_NUMBER = 50
+NUSSELT_NUMBER = 10
 OUTPUT_FILEPATH = "model/pork_tenderloin.tflite"
 
 

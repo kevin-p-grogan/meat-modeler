@@ -19,6 +19,9 @@ struct NondimensionalPredictions {
 /// Information about a model file or labels file.
 typealias FileInfo = (name: String, extension: String)
 
+/// Alias for binning temperatures
+typealias TemperatureBin = (T: Float, probability: Float)
+
 
 /// This class handles all data preprocessing and makes calls to run inference on a given frame
 /// by invoking the `Interpreter`. It then formats the inferences obtained and returns the top N
@@ -40,7 +43,7 @@ class PorkTenderloinModel {
     let tauMax: Float = 1.0
     let shouldWeightRhoByArea: Bool
     let k: Float = 0.47  // [W/m.K] src: https://www.engineeringtoolbox.com/food-thermal-conductivity-d_2177.html
-    let C: Float = 660  // [J/kg.K] src: https://www.engineeringtoolbox.com/specific-heat-capacity-food-d_295.html
+    let C: Float = 2760  // [J/kg.K] src: https://www.engineeringtoolbox.com/specific-heat-capacity-food-d_295.html
     let density: Float = 1090 // [kg/m^3]
     
     let tauEps: Float = 1e-6
@@ -148,17 +151,21 @@ class PorkTenderloinModel {
         return discretization
     }
     
-    func computeSpatialTemperature(T0: Float, TInfty: Float, D: Float, tFinal: Float) -> [SpatialTemperatureDatum]? {
+    func computeFinalSpatialTemperature(T0: Float, TInfty: Float, D: Float, tFinal: Float) -> [SpatialTemperature]? {
         let kappa = k * tFinal / (density * C * pow(D, 2.0))
         let theta0 = T0/TInfty - 1.0
         let predictions = makeNondimensionalPredictions(kappa: kappa, theta0: theta0)
         let endTimePredictions = predictions?.filter{abs($0.tau-tauMax) <= tauEps}.sorted{$0.rho < $1.rho}
-        let dimensionalPredictions = endTimePredictions?.map{SpatialTemperatureDatum(x: $0.rho*D, T: TInfty*($0.theta+1))}
+        let dimensionalPredictions = endTimePredictions?.map{SpatialTemperature(x: $0.rho*D, T: TInfty*($0.theta+1))}
         return dimensionalPredictions
     }
-
+        
+    static func computeFinalTemperatureDistribution(_ spatialTemperatures: [SpatialTemperature], numBins: Int = 10) -> [TemperatureBin] {
+        // Returns the temperature distrubtion sorted by temperature
+        let temperatures = spatialTemperatures.map{$0.T}
+        return temperatures.bin(numBins: numBins).map{TemperatureBin(T: $0.value, probability: $0.probability)}
+    }
 }
-
 // MARK: - Extensions
 
 extension Data {
@@ -174,15 +181,15 @@ extension Data {
 }
 
 extension Array {
-  /// Creates a new array from the bytes of the given unsafe data.
-  ///
-  /// - Warning: The array's `Element` type must be trivial in that it can be copied bit for bit
-  ///     with no indirection or reference-counting operations; otherwise, copying the raw bytes in
-  ///     the `unsafeData`'s buffer to a new array returns an unsafe copy.
-  /// - Note: Returns `nil` if `unsafeData.count` is not a multiple of
-  ///     `MemoryLayout<Element>.stride`.
-  /// - Parameter unsafeData: The data containing the bytes to turn into an array.
-  init?(unsafeData: Data) {
+    /// Creates a new array from the bytes of the given unsafe data.
+    ///
+    /// - Warning: The array's `Element` type must be trivial in that it can be copied bit for bit
+    ///     with no indirection or reference-counting operations; otherwise, copying the raw bytes in
+    ///     the `unsafeData`'s buffer to a new array returns an unsafe copy.
+    /// - Note: Returns `nil` if `unsafeData.count` is not a multiple of
+    ///     `MemoryLayout<Element>.stride`.
+    /// - Parameter unsafeData: The data containing the bytes to turn into an array.
+    init?(unsafeData: Data) {
     guard unsafeData.count % MemoryLayout<Element>.stride == 0 else { return nil }
     #if swift(>=5.0)
     self = unsafeData.withUnsafeBytes { .init($0.bindMemory(to: Element.self)) }
@@ -194,5 +201,42 @@ extension Array {
       ))
     }
     #endif  // swift(>=5.0)
-  }
+    }
+}
+
+typealias Bin = (value: Float, probability: Float)
+
+extension Array where Element: BinaryFloatingPoint {
+    var mean: Float {
+        if self.isEmpty {
+            return 0.0
+        }
+        else {
+            let sum = self.reduce(0, +)
+            return Float(sum) / Float(self.count)
+        }
+    }
+    
+    func bin(numBins: Int) -> [Bin] {
+        // Creates bins with a probability given by the frequency of data in the bin and a value equal to the bin's mean.
+        if self.isEmpty{
+            return []
+        }
+        else {
+            let _numBins = Swift.min(self.count, numBins)
+            let min = Float(self.min()!)
+            let max = Float(self.max()!)
+            let delta = (max-min) / Float(_numBins)
+            var bins = Array<Bin>()
+            for iBin in 0..<_numBins {
+                let start = min + Float(iBin) * delta
+                let finish = start + delta
+                let filteredValues = self.filter{(start<=Float($0)) && (Float($0)<finish)}
+                bins.append(Bin(value: filteredValues.mean,
+                                probability: Float(filteredValues.count) / Float(self.count))
+                )
+            }
+            return bins
+        }
+    }
 }
