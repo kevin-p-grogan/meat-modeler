@@ -21,11 +21,14 @@ struct ResultsView: View {
                         .xAxisLabels(chartData: temperatureDistributionChartData)
                         .headerBox(chartData: temperatureDistributionChartData)
                         .id(temperatureDistributionChartData.id)
-                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 600, alignment: .center)
+                        .frame(width: 300, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 600, alignment: .center)
                 }
                 Section{
                     ResultsTableView(control: control)
-                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 300, alignment: .center)
+                        .frame(width: 300, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+
+//                        .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 250, maxHeight: 300, alignment: .center)
                     }
                 }.navigationBarTitle(Text("Results"))
         }
@@ -56,7 +59,7 @@ struct ResultsTableView: View {
     @ObservedObject var control: Controller
     
     let horizontalSpacing: CGFloat = 50
-    let verticalSpacing: CGFloat = 30
+    let verticalSpacing: CGFloat = 10
     
     var body: some View {
         HStack(spacing: horizontalSpacing){

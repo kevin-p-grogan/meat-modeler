@@ -17,7 +17,7 @@ struct MainView: View {
                 }
             ResultsView(control: control)
                 .tabItem {
-                    Image(systemName:"waveform.path.ecg")
+                    Image(systemName: "function")
                 }
         }
         .font(.headline)
