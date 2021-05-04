@@ -112,10 +112,18 @@ class PorkTenderloinModel {
           return nil
         }
         
+        let cleanedOutputs = cleanOutputs(outputs)
+        
         // Unravel the predictions
-        let nondimensionalPredictions = self.associateSpaceAndTime(from: outputs)
+        let nondimensionalPredictions = self.associateSpaceAndTime(from: cleanedOutputs)
         return nondimensionalPredictions
-  }
+    }
+    
+    private func cleanOutputs(_ outputs: [Float]) -> [Float] {
+        // Suppress NaNs by filling in zeros
+        let outputsWithoutNaN = outputs.map{$0.isNaN ? 0.0: $0}
+        return outputsWithoutNaN
+    }
     
     private func associateSpaceAndTime(from outputs: [Float]) -> [NondimensionalPredictions] {
         // Assoctiates the spatial and temporal (i.e., rho and tau, respectively) with the temperature (theta).
