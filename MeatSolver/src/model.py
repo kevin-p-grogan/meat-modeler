@@ -8,6 +8,9 @@ import tensorflow as tf
 class ModelMaker(ABC):
     _model: Optional[tf.keras.Model]
 
+    # Base datatype for tensorflow
+    DTYPE = tf.float32
+
     @abstractmethod
     def make(self):
         pass

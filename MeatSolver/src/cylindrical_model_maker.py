@@ -35,9 +35,6 @@ class CylindricalModelMaker(ModelMaker):
     MIN_RHO = 0.0
     MAX_RHO = 0.5
 
-    # Base datatype for tensorflow
-    DTYPE = tf.float32
-
     def __init__(self, num_beta: int = 1, num_rho: int = 2, num_tau: int = 2, nusselt_number: float = 50):
         self._num_beta = num_beta
         self._num_rho = num_rho
@@ -46,13 +43,13 @@ class CylindricalModelMaker(ModelMaker):
         self._model = None
 
     def make(self):
-        input = tf.keras.Input(2, dtype=self.DTYPE)
-        kappa = input[:, 0]
-        theta0 = input[:, 1]
+        parameters = tf.keras.Input(2, dtype=self.DTYPE)
+        kappa = parameters[:, 0]
+        theta0 = parameters[:, 1]
         betas = self._compute_betas()
         rhos, taus = self._make_variables()
         theta = self._compute_theta(rhos, taus, betas, kappa, theta0)
-        self._model = tf.keras.Model(inputs=input, outputs=theta)
+        self._model = tf.keras.Model(inputs=parameters, outputs=theta)
 
     def _compute_betas(self) -> np.ndarray:
         nusselt_numbers, betas = self._compute_zero_contours()
