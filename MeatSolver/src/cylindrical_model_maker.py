@@ -7,6 +7,8 @@ import numpy as np
 from scipy.special import j0, j1
 import matplotlib.pyplot as plt
 
+from src.model import ModelMaker
+
 # Output parameters.
 NUM_BETA = 50
 NUM_RHO = 100
@@ -15,7 +17,7 @@ NUSSELT_NUMBER = 10
 OUTPUT_FILEPATH = "model/cylindrical_model.tflite"
 
 
-class CylindricalModel:
+class CylindricalModelMaker(ModelMaker):
     _num_beta: int
     _num_rho: int
     _num_tau: int
@@ -67,7 +69,7 @@ class CylindricalModel:
         )
         betas = np.linspace(self.MIN_BETA, self.MAX_BETA, self.NUM_SAMPLES)
         nusselt_number_grid, beta_grid = np.meshgrid(nusselt_numbers, betas)
-        residuals = CylindricalModel._transcendental_equation(beta_grid, nusselt_number_grid)
+        residuals = CylindricalModelMaker._transcendental_equation(beta_grid, nusselt_number_grid)
         paths = plt.contour(nusselt_number_grid, beta_grid, residuals, levels=[0]).collections[0].get_paths()
         plt.close("all")
         paths = sorted(paths, key=lambda p: p.vertices[:, 1].min())
@@ -164,6 +166,6 @@ class CylindricalModel:
 
 
 if __name__ == "__main__":
-    cylindrical_model = CylindricalModel(NUM_BETA, NUM_RHO, NUM_TAU, NUSSELT_NUMBER)
+    cylindrical_model = CylindricalModelMaker(NUM_BETA, NUM_RHO, NUM_TAU, NUSSELT_NUMBER)
     cylindrical_model.create()
     cylindrical_model.save("../model/cylindrical_model.tflite")
