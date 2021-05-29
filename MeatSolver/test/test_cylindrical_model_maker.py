@@ -70,12 +70,12 @@ class TestCylindricalModelMaker(unittest.TestCase):
         self.assertEqual(taus[0], cylindrical_model.MIN_TAU)
         self.assertAlmostEqual(taus[-1], cylindrical_model.MAX_TAU, places=3)
 
-    def test_create(self):
+    def test_make(self):
         num_rho = 10
         num_tau = 10
         num_beta = 50
         cylindrical_model = CylindricalModelMaker(num_rho=num_rho, num_tau=num_tau, num_beta=num_beta)
-        cylindrical_model.create()
+        cylindrical_model.make()
         cylindrical_model.plot(kappa=MIN_KAPPA, theta0=-1.0, output_directory='.')
         cylindrical_model.plot(kappa=MAX_KAPPA, theta0=-1.0, output_directory='.')
         self.assertIsInstance(cylindrical_model._model, tf.keras.Model)

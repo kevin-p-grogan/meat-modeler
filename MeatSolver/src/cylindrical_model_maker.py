@@ -1,4 +1,3 @@
-from tempfile import TemporaryDirectory
 from typing import Optional
 import os
 
@@ -22,7 +21,6 @@ class CylindricalModelMaker(ModelMaker):
     _num_rho: int
     _num_tau: int
     _nusselt_number: float
-    _model: Optional[tf.keras.Model]
 
     # Parameters for determining the transcendental equation. Parameters investigated in notebooks/transcendental_equation
     MIN_NUSSELT_NUMBER = 5.0
@@ -47,7 +45,7 @@ class CylindricalModelMaker(ModelMaker):
         self._nusselt_number = nusselt_number
         self._model = None
 
-    def create(self):
+    def make(self):
         input = tf.keras.Input(2, dtype=self.DTYPE)
         kappa = input[:, 0]
         theta0 = input[:, 1]
@@ -91,17 +89,6 @@ class CylindricalModelMaker(ModelMaker):
         """Yields the residual of the transcendental equation"""
         residual = beta * j1(beta / 2.0) - nusselt_number * j0(beta / 2.0)
         return residual
-
-    def save(self, filepath: str):
-        """Saves the model as a tflite model to a filepath."""
-        assert self._model
-        with TemporaryDirectory(dir='.') as tmp_dir:
-            self._model.save(tmp_dir)
-            converter = tf.lite.TFLiteConverter.from_saved_model(tmp_dir)
-            tflite_model = converter.convert()
-
-            with open(filepath, 'wb') as f:
-                f.write(tflite_model)
 
     def _make_variables(self) -> (np.ndarray, np.ndarray):
         """Create 1D tensors for rho and tau"""
@@ -167,5 +154,5 @@ class CylindricalModelMaker(ModelMaker):
 
 if __name__ == "__main__":
     cylindrical_model = CylindricalModelMaker(NUM_BETA, NUM_RHO, NUM_TAU, NUSSELT_NUMBER)
-    cylindrical_model.create()
+    cylindrical_model.make()
     cylindrical_model.save("../model/cylindrical_model.tflite")
