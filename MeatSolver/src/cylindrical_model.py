@@ -12,10 +12,10 @@ NUM_BETA = 50
 NUM_RHO = 100
 NUM_TAU = 100
 NUSSELT_NUMBER = 10
-OUTPUT_FILEPATH = "model/pork_tenderloin.tflite"
+OUTPUT_FILEPATH = "model/cylindrical_model.tflite"
 
 
-class PorkTenderloinModel:
+class CylindricalModel:
     _num_beta: int
     _num_rho: int
     _num_tau: int
@@ -67,7 +67,7 @@ class PorkTenderloinModel:
         )
         betas = np.linspace(self.MIN_BETA, self.MAX_BETA, self.NUM_SAMPLES)
         nusselt_number_grid, beta_grid = np.meshgrid(nusselt_numbers, betas)
-        residuals = PorkTenderloinModel._transcendental_equation(beta_grid, nusselt_number_grid)
+        residuals = CylindricalModel._transcendental_equation(beta_grid, nusselt_number_grid)
         paths = plt.contour(nusselt_number_grid, beta_grid, residuals, levels=[0]).collections[0].get_paths()
         plt.close("all")
         paths = sorted(paths, key=lambda p: p.vertices[:, 1].min())
@@ -164,6 +164,6 @@ class PorkTenderloinModel:
 
 
 if __name__ == "__main__":
-    pork_tenderloin_model = PorkTenderloinModel(NUM_BETA, NUM_RHO, NUM_TAU, NUSSELT_NUMBER)
-    pork_tenderloin_model.create()
-    pork_tenderloin_model.save("../model/pork_tenderloin.tflite")
+    cylindrical_model = CylindricalModel(NUM_BETA, NUM_RHO, NUM_TAU, NUSSELT_NUMBER)
+    cylindrical_model.create()
+    cylindrical_model.save("../model/cylindrical_model.tflite")
