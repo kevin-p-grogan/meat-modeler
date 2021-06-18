@@ -15,7 +15,7 @@ class FlatFrustumModelMaker(ModelMaker):
     _aspect_ratio: tf.Tensor
     _pointiness: tf.Tensor
     _flatness: tf.Tensor
-    _radial_bc_constants: tf.Tensor
+    _radial_boundary_constants: tf.Tensor
 
     # Model definition-time variables
     _rho: tf.Tensor
@@ -91,7 +91,80 @@ class FlatFrustumModelMaker(ModelMaker):
         self._xi = self._create_domain(lower=min_xi, upper=max_xi, num_cells=self._num_xi, axis=2)
 
     def _set_boundary_constants(self):
-        pass
+        self._radial_boundary_constants = self._get_radial_boundary_constants(a=self._aspect_ratio,
+                                                                              f=self._flatness,
+                                                                              p=self._pointiness,
+                                                                              rho=self._rho,
+                                                                              phi=self._phi,
+                                                                              xi=self._xi)
+
+    @staticmethod
+    def _get_radial_boundary_constants(a: tf.Tensor, f: tf.Tensor, p: tf.Tensor, phi: tf.Tensor,
+                                       rho: tf.Tensor, xi: tf.Tensor) -> tf.Tensor:
+        """Transformation constants for the gradient at the boundary. Found in coordinate_transformation.ipynb."""
+        r = (rho[-1] + rho[-2]) / 2.0  # coordinate at the boundary
+        shape = phi.shape[1], xi.shape[2]
+        A_00 = a * (-2 * r * a * f ** 2 * tf.sin(phi) ** 2 + 2 * r * a * f * tf.sin(
+            phi) + 2 * r * f ** 2 * p * xi * tf.sin(phi) ** 2 - 2 * r * f * p * xi * tf.sin(phi) - a * tf.sqrt(
+            r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2)) * tf.cos(phi) / (
+                       r * a ** 2 * f ** 3 * tf.sin(phi) ** 3 - r * a ** 2 * f ** 2 * tf.sin(
+                   phi) ** 2 + r * a ** 2 * f * tf.sin(
+                   phi) - r * a ** 2 - 2 * r * a * f ** 3 * p * xi * tf.sin(
+                   phi) ** 3 + 2 * r * a * f ** 2 * p * xi * tf.sin(phi) ** 2 - 2 * r * a * f * p * xi * tf.sin(
+                   phi) + 2 * r * a * p * xi + r * f ** 3 * p ** 2 * xi ** 2 * tf.sin(
+                   phi) ** 3 - r * f ** 2 * p ** 2 * xi ** 2 * tf.sin(
+                   phi) ** 2 + r * f * p ** 2 * xi ** 2 * tf.sin(
+                   phi) - r * p ** 2 * xi ** 2 + 2 * a ** 2 * f * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(
+                   phi) - 2 * a * f * p * xi * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(phi))
+        A_00 = tf.reshape(A_00, shape)
+        A_01 = a * tf.sin(phi) / (r * (a * f * tf.sin(phi) - a - f * p * xi * tf.sin(phi) + p * xi))
+        A_01 = tf.reshape(A_01, shape)
+        A_02 = tf.zeros(shape)
+        A_10 = a * (-r * a * f * tf.sin(phi) ** 2 + r * a * tf.sin(phi) + r * f * p * xi * tf.sin(
+            phi) ** 2 - r * p * xi * tf.sin(phi) - 2 * a * f * tf.sqrt(
+            r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(phi) ** 2 + a * f * tf.sqrt(
+            r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2)) / (
+                       2 * r * a ** 2 * f ** 2 * tf.sin(phi) ** 2 - 2 * r * a ** 2 * f * tf.sin(
+                   phi) - 4 * r * a * f ** 2 * p * xi * tf.sin(phi) ** 2 + 4 * r * a * f * p * xi * tf.sin(
+                   phi) + 2 * r * f ** 2 * p ** 2 * xi ** 2 * tf.sin(
+                   phi) ** 2 - 2 * r * f * p ** 2 * xi ** 2 * tf.sin(phi) + a ** 2 * f ** 2 * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(
+                   phi) ** 2 + a ** 2 * tf.sqrt(r ** 2 * (-a + p * xi) ** 2 * (
+                       f * tf.sin(phi) - 1) ** 2 / a ** 2) - a * f ** 2 * p * xi * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(
+                   phi) ** 2 - a * p * xi * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2))
+        A_10 = tf.reshape(A_10, shape)
+        A_11 = a * tf.cos(phi) / (r * (-a * f * tf.sin(phi) + a + f * p * xi * tf.sin(phi) - p * xi))
+        A_11 = tf.reshape(A_11, shape)
+        A_12 = tf.zeros(shape)
+        A_20 = r * p * (r * a * f ** 3 * tf.sin(phi) ** 3 - 2 * r * a * f ** 2 * tf.sin(
+            phi) ** 2 + r * a * f * tf.sin(phi) - r * f ** 3 * p * xi * tf.sin(
+            phi) ** 3 + 2 * r * f ** 2 * p * xi * tf.sin(phi) ** 2 - r * f * p * xi * tf.sin(phi) + a * f * tf.sqrt(
+            r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(phi) - a * tf.sqrt(
+            r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2)) / (
+                       r * a ** 2 * f ** 3 * tf.sin(phi) ** 3 - r * a ** 2 * f ** 2 * tf.sin(
+                   phi) ** 2 + r * a ** 2 * f * tf.sin(
+                   phi) - r * a ** 2 - 2 * r * a * f ** 3 * p * xi * tf.sin(
+                   phi) ** 3 + 2 * r * a * f ** 2 * p * xi * tf.sin(phi) ** 2 - 2 * r * a * f * p * xi * tf.sin(
+                   phi) + 2 * r * a * p * xi + r * f ** 3 * p ** 2 * xi ** 2 * tf.sin(
+                   phi) ** 3 - r * f ** 2 * p ** 2 * xi ** 2 * tf.sin(
+                   phi) ** 2 + r * f * p ** 2 * xi ** 2 * tf.sin(
+                   phi) - r * p ** 2 * xi ** 2 + 2 * a ** 2 * f * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(
+                   phi) - 2 * a * f * p * xi * tf.sqrt(
+                   r ** 2 * (-a + p * xi) ** 2 * (f * tf.sin(phi) - 1) ** 2 / a ** 2) * tf.sin(phi))
+        A_20 = tf.reshape(A_20, shape)
+        A_21 = tf.zeros(shape)
+        A_22 = tf.ones(shape)
+        A = tf.stack([  # stack the rows and then the columns
+            tf.stack([A_00, A_10, A_20], axis=-1),
+            tf.stack([A_01, A_11, A_21], axis=-1),
+            tf.stack([A_02, A_12, A_22], axis=-1),
+        ], axis=-1)
+        return A
 
     def _create_domain(self,
                        lower: tf.Tensor,
