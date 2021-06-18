@@ -15,7 +15,7 @@ class FlatFrustumModelMaker(ModelMaker):
     _aspect_ratio: tf.Tensor
     _pointiness: tf.Tensor
     _flatness: tf.Tensor
-    _radial_boundary_constants: tf.Tensor
+    _boundary_transformation_vector: tf.Tensor
 
     # Model definition-time variables
     _rho: tf.Tensor
@@ -62,7 +62,7 @@ class FlatFrustumModelMaker(ModelMaker):
     def _initialize(self, parameters: tf.Tensor) -> (tf.Tensor, tf.Variable):
         self._set_runtime_parameters(parameters)
         self._set_domain_variables()
-        self._set_boundary_constants()
+        self._set_boundary_transformation_vector()
         theta = self._create_theta()
         return theta
 
@@ -90,17 +90,39 @@ class FlatFrustumModelMaker(ModelMaker):
         min_xi, max_xi = tf.constant(self.MIN_XI), self._aspect_ratio
         self._xi = self._create_domain(lower=min_xi, upper=max_xi, num_cells=self._num_xi, axis=2)
 
-    def _set_boundary_constants(self):
-        self._radial_boundary_constants = self._get_radial_boundary_constants(a=self._aspect_ratio,
-                                                                              f=self._flatness,
-                                                                              p=self._pointiness,
-                                                                              rho=self._rho,
-                                                                              phi=self._phi,
-                                                                              xi=self._xi)
+    def _create_domain(self,
+                       lower: tf.Tensor,
+                       upper: tf.Tensor,
+                       num_cells: int,
+                       axis: int) -> tf.Tensor:
+        """Creates a cell-centered grid with ghost cells."""
+        delta = (upper - lower) / float(num_cells)
+        num_total_cells = num_cells + 2*self.NUM_GHOST
+        start = lower - delta/2.0
+        end = upper + delta/2.0
+        domain = start + (end-start)*np.linspace(0.0, 1.0, num_total_cells)
+        shape = [num_total_cells if ax == axis else 1 for ax in range(self.NUM_DIMS)]
+        domain = tf.reshape(domain, shape=shape)
+        return domain
+
+    def _set_boundary_transformation_vector(self):
+        transformation_matrix = self._get_boundary_transformation_matrix(a=self._aspect_ratio,
+                                                                         f=self._flatness,
+                                                                         p=self._pointiness,
+                                                                         rho=self._rho,
+                                                                         phi=self._phi,
+                                                                         xi=self._xi)
+        normal_vector = self._get_boundary_normal_vector(a=self._aspect_ratio,
+                                                         f=self._flatness,
+                                                         p=self._pointiness,
+                                                         rho=self._rho,
+                                                         phi=self._phi,
+                                                         xi=self._xi)
+        self._boundary_transformation_vector = normal_vector @ transformation_matrix
 
     @staticmethod
-    def _get_radial_boundary_constants(a: tf.Tensor, f: tf.Tensor, p: tf.Tensor, phi: tf.Tensor,
-                                       rho: tf.Tensor, xi: tf.Tensor) -> tf.Tensor:
+    def _get_boundary_transformation_matrix(a: tf.Tensor, f: tf.Tensor, p: tf.Tensor, phi: tf.Tensor,
+                                            rho: tf.Tensor, xi: tf.Tensor) -> tf.Tensor:
         """Transformation constants for the gradient at the boundary. Found in coordinate_transformation.ipynb."""
         r = (rho[-1] + rho[-2]) / 2.0  # coordinate at the boundary
         shape = phi.shape[1], xi.shape[2]
@@ -166,20 +188,22 @@ class FlatFrustumModelMaker(ModelMaker):
         ], axis=-1)
         return A
 
-    def _create_domain(self,
-                       lower: tf.Tensor,
-                       upper: tf.Tensor,
-                       num_cells: int,
-                       axis: int) -> tf.Tensor:
-        """Creates a cell-centered grid with ghost cells."""
-        delta = (upper - lower) / float(num_cells)
-        num_total_cells = num_cells + 2*self.NUM_GHOST
-        start = lower - delta/2.0
-        end = upper + delta/2.0
-        domain = start + (end-start)*np.linspace(0.0, 1.0, num_total_cells)
-        shape = [num_total_cells if ax == axis else 1 for ax in range(self.NUM_DIMS)]
-        domain = tf.reshape(domain, shape=shape)
-        return domain
+    @staticmethod
+    def _get_boundary_normal_vector(a: tf.Tensor, f: tf.Tensor, p: tf.Tensor, phi: tf.Tensor,
+                                    rho: tf.Tensor, xi: tf.Tensor) -> tf.Tensor:
+        """Normal unit vector at the radial boundary. Found in coordinate_transformation.ipynb."""
+        r = (rho[-1] + rho[-2]) / 2.0  # coordinate at the boundary
+        shape = phi.shape[1], xi.shape[2], 1
+        n_0 = r * (a - p * xi) * (-f * tf.sin(2 * phi) + tf.cos(phi)) / a
+        n_0 = tf.reshape(n_0, shape)
+        n_1 = r * (a - p * xi) * (-2 * f * tf.sin(phi) ** 2 + f + tf.sin(phi)) / a
+        n_1 = tf.reshape(n_1, shape)
+        n_2 = r ** 2 * p * (a - p * xi) * (f * tf.sin(phi) - 1) ** 2 / a ** 2
+        n_2 = tf.reshape(n_2, shape)
+        n = tf.stack([n_0, n_1, n_2], axis=-1)
+        magnitude = tf.sqrt(tf.reduce_sum(n * n, axis=-1))[..., tf.newaxis]
+        n_hat = n / magnitude
+        return n_hat
 
     def _advance(self, theta: tf.Tensor):
         theta = self._set_boundary(theta)

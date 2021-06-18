@@ -35,7 +35,7 @@ class TestFlatFrustumModelMaker(unittest.TestCase):
         domain = model_maker._create_domain(lower, upper, num_cells, 0)
         self.assertEqual(np.argmax(domain.shape), 0)
 
-    def test_get_radial_boundary_coefficients(self):
+    def test_get_boundary_transformation_matrix(self):
         model_maker = FlatFrustumModelMaker()
         one = tf.constant(1.0, dtype=tf.float32)
         zero = tf.constant(0, dtype=tf.float32)
@@ -47,7 +47,7 @@ class TestFlatFrustumModelMaker(unittest.TestCase):
         # use asymptotic coefficients for verification
         p = tf.constant(0.0, dtype=tf.float32)
         f = tf.constant(0.0, dtype=tf.float32)
-        predicted_coefficients = model_maker._get_radial_boundary_constants(a, f, p, phi, rho, xi)
+        predicted_coefficients = model_maker._get_boundary_transformation_matrix(a, f, p, phi, rho, xi)
         shape = max(phi.shape), max(xi.shape)
         self.assertEqual(shape + (3, 3), predicted_coefficients.shape)
 
@@ -61,9 +61,36 @@ class TestFlatFrustumModelMaker(unittest.TestCase):
 
         # test that the routine work with Keras Tensors
         kt = tf.keras.Input(3, batch_size=1)[0, 0]
-        predicted_coefficients = model_maker._get_radial_boundary_constants(a * kt, f * kt, p * kt, phi * kt, rho * kt,
-                                                                            xi * kt)
+        predicted_coefficients = model_maker._get_boundary_transformation_matrix(a * kt, f * kt, p * kt, phi * kt, rho * kt,
+                                                                                 xi * kt)
         self.assertEqual(shape + (3, 3), predicted_coefficients.shape)
+
+    def test_get_boundary_normal_vector(self):
+        model_maker = FlatFrustumModelMaker()
+        one = tf.constant(1.0, dtype=tf.float32)
+        zero = tf.constant(0, dtype=tf.float32)
+        a = one
+        r = 0.5
+        rho = model_maker._create_domain(zero, r * one, 10, axis=0)
+        phi = model_maker._create_domain(zero, 2 * np.pi * one, 10, axis=1)
+        xi = model_maker._create_domain(zero, a, 10, axis=2)
+        # use asymptotic coefficients for verification
+        p = tf.constant(0.0, dtype=tf.float32)
+        f = tf.constant(0.0, dtype=tf.float32)
+        predicted_normal_vector = model_maker._get_boundary_normal_vector(a, f, p, phi, rho, xi)
+        shape = max(phi.shape), max(xi.shape)
+        self.assertEqual(shape + (1, 3), predicted_normal_vector.shape)
+
+        # ensure the this matches the asymptotic predictions
+        phi_matrix = tf.repeat(tf.squeeze(phi)[..., tf.newaxis], max(xi.shape), axis=-1)[..., tf.newaxis]
+        actual_normal_vector = tf.stack([tf.cos(phi_matrix), tf.sin(phi_matrix), tf.zeros_like(phi_matrix)], axis=-1)
+        self.assertTrue(np.allclose(actual_normal_vector, predicted_normal_vector))
+
+        # test that the routine work with Keras Tensors
+        kt = tf.keras.Input(3, batch_size=1)[0, 0]
+        predicted_normal_vector = model_maker._get_boundary_normal_vector(a * kt, f * kt, p * kt, phi * kt, rho * kt,
+                                                                          xi * kt)
+        self.assertEqual(shape + (1, 3), predicted_normal_vector.shape)
 
 
 if __name__ == '__main__':
